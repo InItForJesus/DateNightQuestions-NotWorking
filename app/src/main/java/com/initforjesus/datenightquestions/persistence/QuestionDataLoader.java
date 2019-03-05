@@ -22,19 +22,28 @@ public class QuestionDataLoader {
     }
 
     public static Question[] loadInitialDataFromAsset(Context Context) {
+        System.out.println("QuestionDataLoader.loadInitialDataFromAsset: start");
         List<Question> questions = new ArrayList<Question>();
 
+        System.out.println("QuestionDataLoader.loadInitialDataFromAsset: enter try block");
         try {
+            System.out.println("QuestionDataLoader.loadInitialDataFromAsset: get BufferedReader");
             BufferedReader br = new BufferedReader(new InputStreamReader(Context.getAssets().open("test.csv")));
+            System.out.println("QuestionDataLoader.loadInitialDataFromAsset: Have reader");
             String line;
 
+            System.out.println("QuestionDataLoader.loadInitialDataFromAsset: Loop through file");
             while ((line = br.readLine()) != null && line.length() > 0) {
+                System.out.println("QuestionDataLoader.loadInitialDataFromAsset: line = " + line);
                 questions.add(new Question(line));
             }
+            System.out.println("QuestionDataLoader.loadInitialDataFromAsset: Done - close file");
             br.close();
         } catch (IOException e) {
             System.out.println(e);
         }
+        System.out.println("QuestionDataLoader.loadInitialDataFromAsset: questions.size = " + questions.size());
+        System.out.println("QuestionDataLoader.loadInitialDataFromAsset: returning ");
         return (Question[]) questions.toArray();
     }
 
