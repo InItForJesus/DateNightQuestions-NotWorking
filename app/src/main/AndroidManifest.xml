@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.QuestionActivity" android:parentActivityName=".view.MainActivity">
+        <activity android:name=".view.QuestionActivity"
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName=".view.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".view.MainActivity"/>

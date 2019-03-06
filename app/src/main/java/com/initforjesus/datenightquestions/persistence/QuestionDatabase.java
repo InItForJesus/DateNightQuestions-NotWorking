@@ -42,8 +42,14 @@ public abstract class QuestionDatabase extends RoomDatabase {
                             @Override
                             public void run() {
                                 System.out.println("QuestionDatabase.BuildDatabase -- onCreate -- call insertAll");
-                                getDatabase(context).questionDao().insertAll(QuestionDataLoader.loadInitialData());
-//                                getDatabase(context).questionDao().insertAll(QuestionDataLoader.loadInitialDataFromAsset(context));
+//                                getDatabase(context).questionDao().insertAll(QuestionDataLoader.loadInitialData());
+                                try {
+                                    getDatabase(context).questionDao().insertAll(QuestionDataLoader.loadInitialDataFromAsset(context));
+                                } catch (Exception e)
+                                {
+                                    System.out.println(e);
+                                }
+                                System.out.println("QuestionDatabase.BuildDatabase -- onCreate -- insertAll done ");
                             }
                         });
                     }

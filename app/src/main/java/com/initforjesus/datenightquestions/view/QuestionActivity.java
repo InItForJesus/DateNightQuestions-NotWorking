@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -36,5 +37,11 @@ public class QuestionActivity extends AppCompatActivity {
         textView.setText(question.getQuestion());
     }
 
-
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Question question = questionViewModel.getSelectedQuestion();
+        TextView textView = findViewById(R.id.textView);
+        textView.setText(question.getQuestion());
+    }
 }
