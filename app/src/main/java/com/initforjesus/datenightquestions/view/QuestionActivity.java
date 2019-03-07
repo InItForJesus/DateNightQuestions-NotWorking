@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.initforjesus.datenightquestions.R;
@@ -40,8 +41,24 @@ public class QuestionActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        Question question = questionViewModel.getSelectedQuestion();
-        TextView textView = findViewById(R.id.textView);
-        textView.setText(question.getQuestion());
+        //Do nothing - keep the screen the same
+        //this needs to be here so onCreate is not called again
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.manage_questions:
+                // call manage questions code
+                return true;
+            case R.id.settings:
+                // call settings code
+                return true;
+            case R.id.about:
+                // call about code
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Date Night Questions</string>
     <string name="QuestionButtonLabel">Generate Question</string>
+    <string name="Questions_Label">Date night questions to start a conversation</string>
 </resources>

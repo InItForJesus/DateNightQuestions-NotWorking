@@ -6,7 +6,10 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import com.initforjesus.datenightquestions.R;
 import com.initforjesus.datenightquestions.persistence.Question;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 showQuestionsAvailable(questions);
             }
         });
+
     }
 
     public void generateQuestion(View view) {
@@ -36,6 +40,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showQuestionsAvailable(List<Question> questionList) {
+        TextView textView = findViewById(R.id.questions_Available);
+        int questionCount = 0;
+        if (questionList != null) {
+            questionCount = questionList.size();
+        }
+        textView.setText("There are " + questionCount + " questions available");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.option_menu, menu);
+        return true;
 
     }
 }
