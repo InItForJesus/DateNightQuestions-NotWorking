@@ -2,9 +2,11 @@ package com.initforjesus.datenightquestions.persistence;
 
 import android.content.Context;
 
+import com.google.gson.Gson;
+
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,5 +52,60 @@ public class QuestionDataLoader {
     public static void loadDataFromFile() {
         // TODO implement loader
         throw new UnsupportedOperationException();
+    }
+
+    public static void loadInitialDataFromJsonAsset(Context context){
+
+        String jsondata = null;
+        try {
+            InputStream is = context.getAssets().open("initialdata.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            jsondata = new String(buffer, "UTF-8");
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            // TODO notify user of error
+        }
+
+        System.out.println(jsondata);
+        if (jsondata != null) {
+            loadDataFromJsonString(jsondata);
+        }
+
+
+    }
+
+    public static void loadDataFromJsonString(String jsonData) {
+        System.out.println("loadDataFromJson - Start");
+
+        //can throw com.google.gson.stream.MalformedJsonException
+        JsonDataModel jsonDataModel = new Gson().fromJson( jsonData, JsonDataModel.class);
+        if (jsonDataModel != null && jsonDataModel.sources != null) {
+            for (JsonDataModel.SourceData sourceData: jsonDataModel.sources){
+                System.out.println("SourceID = " + sourceData.sourceID);
+                if (sourceData.catagories != null) {
+                    System.out.println("Catagory count = " + sourceData.catagories.size());
+
+                    for (JsonDataModel.CatagoryData catagory : sourceData.catagories) {
+                        System.out.println("Catagory = " + catagory.catagory);
+                        if (catagory.questions != null) {
+                            System.out.println("question count = " + catagory.questions.size());
+                            for (String question : catagory.questions) {
+                                System.out.println("question = " + question);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            System.out.println("loadDataFromJson - jsonDataModel == " + jsonDataModel);
+        }
+
+        System.out.println("loadDataFromJson - Done");
     }
 }

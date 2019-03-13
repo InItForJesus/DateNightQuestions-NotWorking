@@ -45,6 +45,8 @@ public abstract class QuestionDatabase extends RoomDatabase {
 //                                getDatabase(context).questionDao().insertAll(QuestionDataLoader.loadInitialData());
                                 try {
                                     getDatabase(context).questionDao().insertAll(QuestionDataLoader.loadInitialDataFromAsset(context));
+                                    System.out.println("QuestionDatabase.BuildDatabase -- onCreate -- call loadInitialDataFromJsonAsset");
+                                    QuestionDataLoader.loadInitialDataFromJsonAsset(context);
                                 } catch (Exception e)
                                 {
                                     System.out.println(e);
