@@ -5,9 +5,24 @@ import java.util.Calendar;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity (tableName = "question_table")
+import static androidx.room.ForeignKey.CASCADE;
+
+@Entity (tableName = "question_table",
+         foreignKeys = {
+         @ForeignKey (
+                 entity = Source.class,
+                 parentColumns = "sourceID",
+                 childColumns = "sourceID",
+                 onDelete = CASCADE
+         ), @ForeignKey (
+                entity = Catagory.class,
+                parentColumns = "catagory",
+                childColumns =  "catagory",
+                onDelete = CASCADE
+         )})
 public class Question {
 
     @NonNull
@@ -20,9 +35,19 @@ public class Question {
     // year*10000+month*100+day
     private int answered;
 
-    public Question(@NonNull String question) {
+    @NonNull
+    @ColumnInfo(name="sourceID")
+    private String sourceID;
+
+    @NonNull
+    @ColumnInfo(name="catagory")
+    private String catagory;
+
+    public Question(@NonNull String question, @NonNull String sourceID, @NonNull String catagory) {
         this.question = question;
         this.answered = -1;
+        this.sourceID = sourceID;
+        this.catagory = catagory;
     }
 
     @NonNull
@@ -48,5 +73,23 @@ public class Question {
         return calendar.get(Calendar.YEAR) * 10000 +
                 (calendar.get(Calendar.MONTH)+1) * 100 +
                 calendar.get(Calendar.DAY_OF_MONTH);
+    }
+
+    @NonNull
+    public String getSourceID() {
+        return sourceID;
+    }
+
+    public void setSourceID(@NonNull String sourceID) {
+        this.sourceID = sourceID;
+    }
+
+    @NonNull
+    public String getCatagory() {
+        return catagory;
+    }
+
+    public void setCatagory(@NonNull String catagory) {
+        this.catagory = catagory;
     }
 }

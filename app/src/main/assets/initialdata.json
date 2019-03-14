@@ -9,7 +9,6 @@
   "allowedCatagories":[
     "General",
     "Faith",
-    "Relationship",
     "Childhood",
     "Intimate"
   ],
@@ -22,21 +21,15 @@
           "questions": [
             "What do I do that makes you smile?",
             "What is your favorite time of day and why?",
-            "What is something you think your mom and dad wished you would have done?",
             "What can I do to show you my love more effectively?",
-            "What was different about your family as a kid as compared to other families?",
             "What is your favorite romantic memory we’ve made together?",
             "What do you love most about our home?",
             "Where is your dream vacation if money weren’t an issue?",
-            "What do you remember about learning to drive?",
-            "Who was your favorite teacher in school?  Why?",
             "If our love had a theme song, what would it be?",
             "What is perhaps the worst movie you’ve ever seen?",
             "Of all the things I do, what do you appreciate the most?",
             "What truth do I preach better than I practice?",
-            "Can you recall visiting your parents’ workplace and if so, describe it and how you felt when you went there?",
             "Do I tell you that I love you often enough? Too much?",
-            "Tell me your most serious physical injury as a child.",
             "Do I respect and honor you around other people?",
             "What is your favorite memory of the two of us together before we were married? Second favorite?",
             "Do I ever joke about things you wish I wouldn’t? Do I ever joke at times you think are inappropriate?",
@@ -47,14 +40,11 @@
             "What is your greatest motivation for getting up every day and going to work?",
             "What things can you always count on me for? (try to name 5)",
             "Is there anything that you feel like we have a hard time discussing? Why do you think they’re so difficult for us to talk about them?",
-            "What is your favorite childhood memory?",
             "If you could have dinner with anyone in the world who would it be and why?",
             "What was the happiest moment of your life? The saddest?",
             "When did you first notice me? What was the attraction? Is attraction still important?",
             "Who has been the biggest influence on your life? What lessons did that person teach you?",
             "Have I ever done anything to ‘take the wind out your sails’?",
-            "Who has been the kindest to you in your life?",
-            "What is your earliest memory?",
             "Can you remember the way we felt when our children were born (thankful, in awe)? Do you still feel that way? If not, what would it take for us to feel that way about them more often?",
             "When I get angry with you and you ask for forgiveness, do you feel that I forgive you by my actions as well as by my words?",
             "Do you feel like you’re harder on yourself when you make a mistake than you need to be? How?",
@@ -102,6 +92,20 @@
             "What are you dreaming about right now?",
             "Where would you like us to be 10 years from now?",
             "What is the most courageous thing you’ve ever done?"
+          ]
+        },
+        {
+          "catagory": "Childhood",
+          "questions": [
+            "Who has been the kindest to you in your life?",
+            "Can you recall visiting your parents’ workplace and if so, describe it and how you felt when you went there?",
+            "Tell me your most serious physical injury as a child.",
+            "What is your favorite childhood memory?",
+            "What is your earliest memory?",
+            "What do you remember about learning to drive?",
+            "What is something you think your mom and dad wished you would have done?",
+            "What was different about your family as a kid as compared to other families?",
+            "Who was your favorite teacher in school?  Why?"
           ]
         },
         {
