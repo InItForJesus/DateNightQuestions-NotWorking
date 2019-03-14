@@ -18,9 +18,9 @@ import static androidx.room.ForeignKey.CASCADE;
                  childColumns = "sourceID",
                  onDelete = CASCADE
          ), @ForeignKey (
-                entity = Catagory.class,
-                parentColumns = "catagory",
-                childColumns =  "catagory",
+                entity = Category.class,
+                parentColumns = "category",
+                childColumns =  "category",
                 onDelete = CASCADE
          )})
 public class Question {
@@ -40,14 +40,14 @@ public class Question {
     private String sourceID;
 
     @NonNull
-    @ColumnInfo(name="catagory")
-    private String catagory;
+    @ColumnInfo(name="category")
+    private String category;
 
-    public Question(@NonNull String question, @NonNull String sourceID, @NonNull String catagory) {
+    public Question(@NonNull String question, @NonNull String sourceID, @NonNull String category) {
         this.question = question;
         this.answered = -1;
         this.sourceID = sourceID;
-        this.catagory = catagory;
+        this.category = category;
     }
 
     @NonNull
@@ -85,11 +85,11 @@ public class Question {
     }
 
     @NonNull
-    public String getCatagory() {
-        return catagory;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCatagory(@NonNull String catagory) {
-        this.catagory = catagory;
+    public void setCategory(@NonNull String category) {
+        this.category = category;
     }
 }

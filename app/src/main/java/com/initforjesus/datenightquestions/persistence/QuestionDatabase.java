@@ -16,6 +16,8 @@ public abstract class QuestionDatabase extends RoomDatabase {
     private static volatile QuestionDatabase INSTANCE;
 
     public abstract QuestionDao questionDao();
+    public abstract SourceDao sourceDao();
+    public abstract CategoryDao categoryDao();
 
     public synchronized static QuestionDatabase getDatabase(Context context) {
         if (INSTANCE == null) {
