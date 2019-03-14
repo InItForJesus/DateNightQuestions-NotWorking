@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -36,13 +37,16 @@ public class QuestionActivity extends AppCompatActivity {
         Question question = questionViewModel.pickRandomQuestion();
         TextView textView = findViewById(R.id.textView);
         textView.setText(question.getQuestion());
+        textView.setMovementMethod(new ScrollingMovementMethod());
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        //Do nothing - keep the screen the same
-        //this needs to be here so onCreate is not called again
+        Question question = questionViewModel.getSelectedQuestion();
+        TextView textView = findViewById(R.id.textView);
+        textView.setText(question.getQuestion());
+        textView.setMovementMethod(new ScrollingMovementMethod());
     }
 
     @Override
