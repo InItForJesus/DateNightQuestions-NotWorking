@@ -17,11 +17,11 @@ public class Category {
     }
 
     @NonNull
-    public String getCatagory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCatagory(@NonNull String category) {
+    public void setCategory(@NonNull String category) {
         this.category = category;
     }
 }

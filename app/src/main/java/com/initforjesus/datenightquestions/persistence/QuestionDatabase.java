@@ -10,7 +10,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Question.class}, version = 1, exportSchema = false)
+@Database(entities = {Question.class, Source.class, Category.class}, version = 1, exportSchema = false)
 public abstract class QuestionDatabase extends RoomDatabase {
 
     private static volatile QuestionDatabase INSTANCE;
@@ -46,7 +46,7 @@ public abstract class QuestionDatabase extends RoomDatabase {
                                 System.out.println("QuestionDatabase.BuildDatabase -- onCreate -- call insertAll");
 //                                getDatabase(context).questionDao().insertAll(QuestionDataLoader.loadInitialData());
                                 try {
-                                    getDatabase(context).questionDao().insertAll(QuestionDataLoader.loadInitialDataFromAsset(context));
+                                    //getDatabase(context).questionDao().insertAll(QuestionDataLoader.loadInitialDataFromAsset(context));
                                     System.out.println("QuestionDatabase.BuildDatabase -- onCreate -- call loadInitialDataFromJsonAsset");
                                     QuestionDataLoader.loadInitialDataFromJsonAsset(context);
                                 } catch (Exception e)
