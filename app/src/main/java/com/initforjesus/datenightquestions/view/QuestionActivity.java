@@ -1,31 +1,39 @@
 package com.initforjesus.datenightquestions.view;
 
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.text.method.ScrollingMovementMethod;
-import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.initforjesus.datenightquestions.R;
 import com.initforjesus.datenightquestions.persistence.Question;
 import com.initforjesus.datenightquestions.persistence.Source;
 
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class QuestionActivity extends AppCompatActivity {
 
     private QuestionViewModel questionViewModel;
+    private boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false); //turn off back arrow at top of screen
         setContentView(R.layout.activity_question);
         questionViewModel = ViewModelProviders.of(this).get(QuestionViewModel.class);
         questionViewModel.getAllQuestions().observe(this, new Observer<List<Question>>() {
@@ -62,8 +70,20 @@ public class QuestionActivity extends AppCompatActivity {
         });
     }
 
-    private void displaySourece(Source source){
+    public void questionAnswered(View view){
+        Question question = questionViewModel.getSelectedQuestion();
+        question.setAnswered(new GregorianCalendar());
+        question.setTimesSkipped(0);
+        questionViewModel.update(question);
+        NavUtils.navigateUpFromSameTask(this);
+    }
 
+    public void skipQuestion(View view) {
+        Question question = questionViewModel.getSelectedQuestion();
+        question.setTimesSkipped(question.getTimesSkipped() + 1);
+        questionViewModel.update(question);
+        //TODO add skip funtionality
+        NavUtils.navigateUpFromSameTask(this);
     }
 
     @Override
@@ -74,19 +94,25 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.manage_questions:
-                // call manage questions code
-                return true;
-            case R.id.settings:
-                // call settings code
-                return true;
-            case R.id.about:
-                // call about code
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
         }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Click back again to exit without selecting Answered or Ingnore/Skip for this question", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+
+//        System.out.println("******* BACK PRESSED *******");
+//        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Press back again to exit without selecting Answered or Ingnore/Skip for this question", 4);
+//        snackbar.show();
     }
 }

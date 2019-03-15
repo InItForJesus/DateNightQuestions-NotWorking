@@ -10,10 +10,9 @@
         android:id="@+id/QuestionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:scrollbars="vertical"
@@ -24,7 +23,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:typeface="serif"
-        app:layout_constraintBottom_toTopOf="@+id/SourceLabel"
+        app:layout_constraintBottom_toTopOf="@+id/AnsweredButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CategoryLabel" />
@@ -72,4 +71,29 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/SourceLabel" />
+
+    <Button
+        android:id="@+id/AnsweredButton"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:onClick="questionAnswered"
+        android:text="@string/AnsweredButton"
+        app:layout_constraintBottom_toTopOf="@+id/SourceLabel"
+        app:layout_constraintEnd_toStartOf="@+id/IgnoreButton"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/IgnoreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="skipQuestion"
+        android:text="@string/IgnoreButton"
+        app:layout_constraintBottom_toBottomOf="@+id/AnsweredButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/AnsweredButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

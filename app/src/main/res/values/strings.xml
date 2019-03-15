@@ -5,4 +5,6 @@
     <string name="FilledByProgram">Filled by Program</string>
     <string name="CategoryLabel">Category:</string>
     <string name="SourceLabel">Source:</string>
+    <string name="AnsweredButton">Answered</string>
+    <string name="IgnoreButton">Ignore/Skip</string>
 </resources>

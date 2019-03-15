@@ -37,6 +37,8 @@ public class Question {
     // year*10000+month*100+day
     private int answered;
 
+    private int timesSkipped;
+
     @NonNull
     @ColumnInfo(name="sourceID")
     private String sourceID;
@@ -50,6 +52,7 @@ public class Question {
         this.answered = -1;
         this.sourceID = sourceID;
         this.category = category;
+        this.timesSkipped = 0;
     }
 
     @NonNull
@@ -93,5 +96,13 @@ public class Question {
 
     public void setCategory(@NonNull String category) {
         this.category = category;
+    }
+
+    public int getTimesSkipped() {
+        return timesSkipped;
+    }
+
+    public void setTimesSkipped(int timesSkipped) {
+        this.timesSkipped = timesSkipped;
     }
 }

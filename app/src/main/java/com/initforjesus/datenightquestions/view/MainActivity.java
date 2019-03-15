@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -54,5 +55,22 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.option_menu, menu);
         return true;
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.manage_questions:
+                // call manage questions code
+                return true;
+            case R.id.settings:
+                // call settings code
+                return true;
+            case R.id.about:
+                // call about code
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
