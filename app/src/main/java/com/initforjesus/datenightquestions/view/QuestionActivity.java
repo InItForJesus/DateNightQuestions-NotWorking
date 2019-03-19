@@ -41,7 +41,9 @@ public class QuestionActivity extends AppCompatActivity {
             public void onChanged(List<Question> questions) {
                 Question question = questionViewModel.pickRandomQuestion();
                 displayQuestion(question);
+
             }
+
         });
     }
 
@@ -68,6 +70,9 @@ public class QuestionActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //remove on change
+        questionViewModel.getAllQuestions().removeObservers(this);
     }
 
     public void questionAnswered(View view){
