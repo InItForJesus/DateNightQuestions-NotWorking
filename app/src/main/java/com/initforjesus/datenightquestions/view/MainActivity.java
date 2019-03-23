@@ -59,12 +59,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = null;
         switch (item.getItemId()) {
             case R.id.manage_questions:
-                // call manage questions code
+//                intent = new Intent(this, SettingsActivity.class);
+//                startActivity(intent);
                 return true;
             case R.id.settings:
-                // call settings code
+                intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.about:
                 // call about code
