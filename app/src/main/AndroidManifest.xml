@@ -9,12 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.QuestionActivity"
+        <activity
+            android:name=".view.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".view.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.initforjesus.datenightquestions.view.MainActivity" />
+        </activity>
+        <activity
+            android:name=".view.QuestionActivity"
             android:configChanges="orientation|screenSize"
             android:parentActivityName=".view.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".view.MainActivity"/>
+                android:value=".view.MainActivity" />
         </activity>
         <activity android:name=".view.MainActivity">
             <intent-filter>
