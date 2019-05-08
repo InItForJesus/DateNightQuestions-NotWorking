@@ -38,5 +38,5 @@ dependencies {
     //JSON
     implementation 'com.google.code.gson:gson:2.8.0'
     //about page
-    //implementation 'com.github.medyo:android-about-page:1.2.5'
+    implementation 'com.github.medyo:android-about-page:1.2.5'
 }
